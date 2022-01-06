@@ -17,7 +17,7 @@
 
 require __DIR__ . '/quickstart.php';
 //
-$illegal_methods = ['POST','PUT','PATCH','DELETE'];
+$illegal_methods = ['PUT','PATCH','DELETE'];
 if (in_array($_SERVER['REQUEST_METHOD'],$illegal_methods)) {
   die(json_encode(['error'=>'invalid HTTP request']));
 }
@@ -34,38 +34,69 @@ $formattedParent = $service->locationName('psu-translate-337220', 'global');
 //
 $err_msg = '';
 $err = false;
+$lang = '';
 $content_arr = [];
 $api_resp = [];
 // build an API response
-if ( !empty($_GET) ) {
-  if (empty($_GET['lang'])) {
-    $err_msg .= 'translator-error: no language is specified; ';
-    $err = true;
-  }
-  if (!empty($_GET['content_0']) && !$err) {
-    // create  ndexed array if query formatting contains integer suffixes
-    $index = 0;
-    while (!empty($_GET['content_'.strval($index)])) {
-      $content_arr[] = $_GET['content_'.strval($index)];
-      $index++;
+
+switch($_SERVER['REQUEST_METHOD']) {
+
+  case 'GET' :
+
+  if ( !empty($_GET) ) {
+    if (empty($_GET['lang'])) {
+      $err_msg .= 'translator-error: no language is specified; ';
+      $err = true;
+    } else {
+      $lang = $_GET['lang'];
     }
-  } else if (!empty($_GET['content']) && !$err) {
-    //
-    $content_arr = [ $_GET['content'] ];
+    if (!empty($_GET['content_0']) && !$err) {
+      // create  ndexed array if query formatting contains integer suffixes
+      $index = 0;
+      while (!empty($_GET['content_'.strval($index)])) {
+        $content_arr[] = $_GET['content_'.strval($index)];
+        $index++;
+      }
+    } else if (!empty($_GET['content']) && !$err) {
+      //
+      $content_arr = [ $_GET['content'] ];
+    } else {
+      $err_msg .= (empty($_GET['lang'])) ?
+        '' : 'translator-error: no content was submitted; ';
+      $err = true;
+    }
   } else {
-    $err_msg .= (empty($_GET['lang'])) ?
-      '' : 'translator-error: no content was submitted; ';
+    $err_msg .= 'translator-error: no operands were sent; ';
     $err = true;
   }
-} else {
-  $err_msg .= 'translator-error: no operands were sent; ';
-  $err = true;
+  break;
+
+  case 'POST' :
+
+  $data = json_decode(file_get_contents("php://input"),true);
+  error_log($data);
+  if (!is_array($data)) {
+    $err = true;
+    $err_msg .= 'translator-error: no input strings were sent';
+  } else if (empty($data['lang']) || !is_array($data['content']) || !count($data['content'])) {
+    $err = true;
+    $err_msg .= 'translator-error: malformed reqeust object';
+  } else {
+    $content_arr = $data['content'];
+    $lang = $data['lang'];
+  }
+  break;
+  //
+  default :
+    $err =  true;
+    $err_msg .= 'translator-error: unknown HTTP method; ';
 }
+
 if (!$err) {
   // call the Google cloud translator
   $response = $service->translateText(
       $content_arr,
-      $_GET['lang'],
+      $lang,
       $formattedParent
   );
   // get the translation for each input text provided
