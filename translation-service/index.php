@@ -15,45 +15,46 @@
  * limitations under the License.
  */
 
-// Install composer dependencies with "composer install --no-dev"
-// @see http://getcomposer.org for more information.
 require __DIR__ . '/quickstart.php';
-
+//
+$illegal_methods = ['POST','PUT','PATCH','DELETE'];
+if (in_array($_SERVER['REQUEST_METHOD'],$illegal_methods)) {
+  die(json_encode(['error'=>'invalid HTTP request']));
+}
+//create and configure the translation clients
 $translate = auth_cloud_translate_explicit(
   'psu-translate-337220',
   'psu-translate-337220-434fbc1ed320.json'
 );
-
 $service = auth_cloud_translate_service_explicit(
   'psu-translate-337220',
   'psu-translate-337220-434fbc1ed320.json'
 );
-
 $formattedParent = $service->locationName('psu-translate-337220', 'global');
-
+//
 $err_msg = '';
 $err = false;
 $content_arr = [];
-
+$api_resp = [];
+// build an API response
 if ( !empty($_GET) ) {
   if (empty($_GET['lang'])) {
     $err_msg .= 'translator-error: no language is specified; ';
     $err = true;
   }
-
-  if (!empty($_GET['content_0'])) {
-
+  if (!empty($_GET['content_0']) && !$err) {
+    // create  ndexed array if query formatting contains integer suffixes
     $index = 0;
     while (!empty($_GET['content_'.strval($index)])) {
       $content_arr[] = $_GET['content_'.strval($index)];
       $index++;
     }
-  } else if (!empty($_GET['content'])) {
-
+  } else if (!empty($_GET['content']) && !$err) {
+    //
     $content_arr = [ $_GET['content'] ];
-
   } else {
-    $err_msg .= 'translator-error: no content was submitted; ';
+    $err_msg .= (empty($_GET['lang'])) ?
+      '' : 'translator-error: no content was submitted; ';
     $err = true;
   }
 } else {
@@ -61,25 +62,19 @@ if ( !empty($_GET) ) {
   $err = true;
 }
 if (!$err) {
-
+  // call the Google cloud translator
   $response = $service->translateText(
       $content_arr,
       $_GET['lang'],
       $formattedParent
   );
-  $index = 0;
-  // Display the translation for each input text provided
+  // get the translation for each input text provided
   foreach ($response->getTranslations() as $translation) {
-      print(strval($index) .') ' . $translation->getTranslatedText());
-      print('<br/>');
-      $index++;
+      $api_resp[] = $translation->getTranslatedText();
   }
+  // respond to the get request
+  print( json_encode($api_resp));
 } else {
-  print($err_msg);
+  print( json_encode(['error:'=>$err_msg]));
 }
-
-
-
-
-
 ?>
