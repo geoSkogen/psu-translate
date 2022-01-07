@@ -27,10 +27,41 @@
 <body>
   <script src="evil.js"></script>
   <noscript>The power of translation</noscript>
-  <h1>Portland State University Translation Service</h1>
-  <h2>A Sample Page for Testing</h2>
+  <div class="flex-row flex-center">
+    <header id="branding">
+      <h1>PORTLAND STATE UNIVERSITY TRANSLATION SERVICE</h1>
+      <h2>A SAMPLE PAGE FOR TESTING</h2>
+    </header>
+  </div>
+  <div class="flex-row flex-center">
+    <a class="crumb" href="..">&laquo;&nbsp;test with user input form</a>
+  </div>
   <article>
     <h3>A Bell Is a Cup&mdash;Until It Is Struck</h3>
+    <div class="flex-row flex-center">
+      <section>
+        <p>
+          You can test REST endpoint for this API using a query string like this:
+        </p>
+        <p>
+          <code>?lang=fr&content_0=Hello+World&content_1=This+is+fun</code>
+        </p>
+      </section>
+    </div>
+    <div class="flex-row flex-center">
+      <a href="../translation-service/index.php?lang=fr&content_0=Hello+World&content_1=This+is+fun">
+        See it in action!
+      </a>
+      <br/>
+    </div>
+    <div class="flex-row flex-center">
+      <section>
+        <h4>You ask crucial basic questions</h4>
+        <p>
+        The hourglass is never right-side-up.
+        </p>
+      </section>
+    </div>
     <div class="flex-row flex-center">
       <ul>
         <li><a href="#">Link A</a></li>
@@ -40,28 +71,31 @@
     </div>
     <div class="flex-row flex-center">
       <section>
-        <h4>Another Day, Another Document Object Model</h4>
+        <h4>Another Day, Another Object to Model My Document</h4>
         <p>
          What is the sound of one hand clapping?
         </p>
-        <h4>I Found That Essence Rare.</h4>
+        <br/>
+        <h4>I Found That Essence Rare</h4>
         <p>
          If no one hears the tree fall, does it still make a sound?
         </p>
-        <h4>You ask crucial basic questions.</h4>
-        <p>
-         The hourglass is never right-side-up.
-        </p>
+        <br/>
       </section>
     </div>
     <section>
-      <h4>Have your cake and eat it, too:</h4>
+      <h4>Have Your Cake and Eat It</h4>
       <div class="flex-row flex-center">
-        <a href="#">Just click here!</a><br/>
+        <section>
+          <p>
+           The grass is always greener on the other side of the fence.
+          </p>
+          <br/>
+        </section>
       </div>
-      <h5>Now, you can enjoy this image of a broken link</h5>
+      <h5>Now, you can enjoy this image of cross-campus traffic in time-lapse:</h5>
       <div class="flex-row flex-center">
-        <img src="#"/>
+        <img style="margin:1em;" src="../image/timelapse-traffic.png"/>
       </div>
     </section>
   </article>
@@ -78,9 +112,9 @@
       All of this content is natural, open, and free since 2022
     </p>
   </footer>
-
-  <iframe id="iframe" src="../index.php"></iframe>
-  <script id="script">console.log('Evil!')</script>
+  <p><sub>(PSU Translation Service ignores iframes)</sub></p>
+  <iframe id="iframe"></iframe>
+  <script id="script">console.log('PSU Translation Service ignores executables')</script>
   <script src="../lib/textnode_translate.js"></script>
   <script src="../lib/translation_widget.js"></script>
 </body>

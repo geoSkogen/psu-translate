@@ -25,8 +25,17 @@
 
 </head>
 <body>
+  <div class="flex-row flex-center">
+    <header id="branding">
+      <h1>PORTLAND STATE UNIVERSITY TRANSLATION SERVICE</h1>
+      <h2>A SAMPLE PAGE FOR TESTING</h2>
+    </header>
+  </div>
+  <div class="flex-row flex-center">
+    <a class="crumb" href="test/">translate the testing page&nbsp;&raquo;</a>
+  </div>
   <h4>Google Translate API</h4>
-  <h5>Test Form</h5>
+  <h5>User Input Testing Form</h5>
   <div class="flex-row flex-center">
     <div>
       <label for="input-count"># of text-nodes</label>

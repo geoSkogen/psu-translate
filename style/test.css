@@ -21,29 +21,47 @@ a,a:link,a:hover,a:visited,a:active {
 
 h1 {
   text-align: center;
-  font-size: 56px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 3.33px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  padding: 0.75em;
+  border: 2.85px solid black;
 }
 
 h2 {
   text-align: center;
-  font-size: 48px;
+  font-size: 36px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  padding: 0.25em;
+  background-color: black;
+  color: white;
 }
 
 h3 {
   text-align: center;
-  font-size: 40px;
+  font-size: 36px;
+  margin: 0.25em;
+  margin-block-start: 0.25em;
+  margin-block-end: 0.25em;
 }
 
 h4 {
   text-align: center;
-  font-size: 32px;
-  margin: 0.5em;
+  font-size: 28px;
+  margin: 0.25em;
+  margin-block-start: 0.25em;
+  margin-block-end: 0.25em;
 }
 
 h5 {
   text-align: center;
-  font-size: 24px;
-  margin: 0.5em;
+  font-size: 20px;
+  margin: 0.25em;
+  margin-block-start: 0.25em;
+  margin-block-end: 0.25em;
 }
 
 p {
@@ -68,6 +86,12 @@ li {
 
 .relshell {
   position: relative;
+}
+
+.crumb {
+  font-size: 16px !important;
+  border: none !important;
+  margin: 0.5em !important;
 }
 
 #relhead-shell {
