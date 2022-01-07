@@ -95,7 +95,8 @@
       </div>
       <h5>Now, you can enjoy this image of cross-campus traffic in time-lapse:</h5>
       <div class="flex-row flex-center">
-        <img style="margin:1em;" src="../image/timelapse-traffic.png"/>
+        <img alt="white and red streaks from time-lapsed exposure of car headlights as they pass under a pedestrian bridge on the university campus"
+             style="margin:1em;" src="../image/timelapse-traffic.png"/>
       </div>
     </section>
   </article>
