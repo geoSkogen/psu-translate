@@ -38,7 +38,7 @@
   </div>
   <article>
     <h3>
-      view this page in 80 languages&nbsp;
+      view this page in 80 languages
     </h3>
     <div class="flex-row flex-center">
       <a id="translate-cta" aria-label="click here to select a language"><i class="fa fa-globe"></i></a>
