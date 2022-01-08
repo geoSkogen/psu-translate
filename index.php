@@ -32,7 +32,7 @@
     </header>
   </div>
   <div class="flex-row flex-center">
-    <a class="crumb" href="test/">translate the testing page&nbsp;&raquo;</a>
+    <a class="crumb" href="test/">translate a page&nbsp;&raquo;</a>
   </div>
   <h4>Google Translate API</h4>
   <h5>User Input Testing Form</h5>

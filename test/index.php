@@ -10,9 +10,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
       integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-      crossorigin="anonymous"/> -->
+      crossorigin="anonymous"/>
 
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
 
@@ -34,14 +34,23 @@
     </header>
   </div>
   <div class="flex-row flex-center">
-    <a class="crumb" href="..">&laquo;&nbsp;test with user input form</a>
+    <a class="crumb" href="..">&laquo;&nbsp;translate user input</a>
   </div>
   <article>
-    <h3>A Bell Is a Cup&mdash;Until It Is Struck</h3>
+    <h3>
+      view this page in 80 languages&nbsp;
+    </h3>
     <div class="flex-row flex-center">
-      <section>
+      <a id="translate-cta" aria-label="click here to select a language"><i class="fa fa-globe"></i></a>
+    </div>
+    <div class="flex-row flex-center">
+      <section aria-description="developer-notes">
         <p>
-          You can test REST endpoint for this API using a query string like this:
+          <b>You can also test the endpoint for this API:</b>
+        </p>
+        <p><code>/psu-translate/transaltion-service/index.php</code></p>
+        <p>
+          <b>&mdash;by appending a query string like this one:</b>
         </p>
         <p>
           <code>?lang=fr&content_0=Hello+World&content_1=This+is+fun</code>
@@ -49,21 +58,33 @@
       </section>
     </div>
     <div class="flex-row flex-center">
-      <a href="../translation-service/index.php?lang=fr&content_0=Hello+World&content_1=This+is+fun">
+      <a href="../translation-service/index.php?lang=fr&content_0=Hello+World&content_1=This+is+fun"
+         aria-description="link to translator's API endpoint">
         See it in action!
       </a>
       <br/>
     </div>
     <div class="flex-row flex-center">
       <section>
-        <h4>You ask crucial basic questions</h4>
+        <h4>A Bell Is a Cup&mdash;Until It Is Struck</h4>
+        <div class="flex-row flex-center">
+          <video
+            width="360px"
+            src="../video/pnw_1.mp4"
+            muted="true"
+            loop="true"
+            autoplay="true"
+            controls
+            alt="cliff-top view of Pacific Ocean surf crashing against rocky shorline"
+           ></video>
+        </div>
         <p>
-        The hourglass is never right-side-up.
+        <i>The hourglass is never right-side-up.</i>
         </p>
       </section>
     </div>
     <div class="flex-row flex-center">
-      <ul>
+      <ul aria-label="list of alphabetical links">
         <li><a href="#">Link A</a></li>
         <li><a href="#">Link B</a></li>
         <li><a href="#">Link C</a></li>
@@ -71,7 +92,7 @@
     </div>
     <div class="flex-row flex-center">
       <section>
-        <h4>Another Day, Another Object to Model My Document</h4>
+        <h4>The Trains Don't Run On-Time</h4>
         <p>
          What is the sound of one hand clapping?
         </p>
@@ -103,7 +124,7 @@
   <footer>
     <h5>Thank you for visiting our website.</h5>
     <div class="flex-row flex-center">
-      <ul>
+      <ul aria-label="one more list of alphabetical links">
         <li><a href="#">Link X</a></li>
         <li><a href="#">Link Y</a></li>
         <li><a href="#">Link Z</a></li>
