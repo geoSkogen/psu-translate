@@ -16,6 +16,7 @@
  */
 
 require __DIR__ . '/quickstart.php';
+header("Access-Control-Allow-Origin: *");
 //
 $illegal_methods = ['PUT','PATCH','DELETE'];
 if (in_array($_SERVER['REQUEST_METHOD'],$illegal_methods)) {

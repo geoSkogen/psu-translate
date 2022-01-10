@@ -38,17 +38,17 @@
   </div>
   <article>
     <h3>
-      view this page in 80 languages
+      view this page in 80 languages<a id="translate-cta" aria-label="click here to select a language"><i class="fa fa-globe"></i></a>
     </h3>
     <div class="flex-row flex-center">
-      <a id="translate-cta" aria-label="click here to select a language"><i class="fa fa-globe"></i></a>
+
     </div>
     <div class="flex-row flex-center">
       <section aria-description="developer-notes">
         <p>
           <b>You can also test the endpoint for this API:</b>
         </p>
-        <p><code>/psu-translate/transaltion-service/index.php</code></p>
+        <p><code>/psu-translate/translation-service/index.php</code></p>
         <p>
           <b>&mdash;by appending a query string like this one:</b>
         </p>
