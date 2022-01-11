@@ -17,6 +17,9 @@
 
 require __DIR__ . '/quickstart.php';
 header("Access-Control-Allow-Origin: *");
+define('SERVICE_ID','psu-translate-337220');
+define('KEY_SLUG','-434fbc1ed320');
+define('KEY_PATH','');
 //
 $illegal_methods = ['PUT','PATCH','DELETE'];
 if (in_array($_SERVER['REQUEST_METHOD'],$illegal_methods)) {
@@ -24,14 +27,14 @@ if (in_array($_SERVER['REQUEST_METHOD'],$illegal_methods)) {
 }
 //create and configure the translation clients
 $translate = auth_cloud_translate_explicit(
-  'psu-translate-337220',
-  'psu-translate-337220-434fbc1ed320.json'
+  SERVICE_ID,
+  KEY_PATH . SERVICE_ID . KEY_SLUG .'.json'
 );
 $service = auth_cloud_translate_service_explicit(
-  'psu-translate-337220',
-  'psu-translate-337220-434fbc1ed320.json'
+  SERVICE_ID,
+  KEY_PATH . SERVICE_ID . KEY_SLUG .'.json'
 );
-$formattedParent = $service->locationName('psu-translate-337220', 'global');
+$formattedParent = $service->locationName(SERVICE_ID, 'global');
 //
 $err_msg = '';
 $err = false;
@@ -52,7 +55,7 @@ switch($_SERVER['REQUEST_METHOD']) {
       $lang = $_GET['lang'];
     }
     if (!empty($_GET['content_0']) && !$err) {
-      // create  ndexed array if query formatting contains integer suffixes
+      // create indexed array if query formatting contains integer suffixes
       $index = 0;
       while (!empty($_GET['content_'.strval($index)])) {
         $content_arr[] = $_GET['content_'.strval($index)];
@@ -104,7 +107,7 @@ if (!$err) {
   foreach ($response->getTranslations() as $translation) {
       $api_resp[] = $translation->getTranslatedText();
   }
-  // respond to the get request
+  // respond to the http request
   print( json_encode($api_resp));
 } else {
   print( json_encode(['error:'=>$err_msg]));
