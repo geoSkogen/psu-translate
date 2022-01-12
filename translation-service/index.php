@@ -16,7 +16,7 @@
  */
 
 require __DIR__ . '/quickstart.php';
-header("Access-Control-Allow-Origin: *");
+//header("Access-Control-Allow-Origin: *");
 define('SERVICE_ID','psu-translate-337220');
 define('KEY_SLUG','-434fbc1ed320');
 define('KEY_PATH','');
@@ -24,6 +24,15 @@ define('KEY_PATH','');
 $illegal_methods = ['PUT','PATCH','DELETE'];
 if (in_array($_SERVER['REQUEST_METHOD'],$illegal_methods)) {
   die(json_encode(['error'=>'invalid HTTP request']));
+}
+
+if (isset($_SERVER['HTTP_ORIGIN'])) {
+  // Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
+  // you want to allow, and if so:
+  header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+  header('Access-Control-Allow-Credentials: true');
+  header('Access-Control-Max-Age: 86400');    // cache for 1 day
+  header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization");
 }
 //create and configure the translation clients
 $translate = auth_cloud_translate_explicit(

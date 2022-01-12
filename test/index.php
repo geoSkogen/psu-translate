@@ -48,7 +48,7 @@
         <p>
           <b>You can also test the endpoint for this API:</b>
         </p>
-        <p><code>/psu-translate/translation-service/index.php</code></p>
+        <p><code>/psu-translate/translation-service/</code></p>
         <p>
           <b>&mdash;by appending a query string like this one:</b>
         </p>
@@ -58,7 +58,7 @@
       </section>
     </div>
     <div class="flex-row flex-center">
-      <a href="../translation-service/index.php?lang=fr&content_0=Hello+World&content_1=This+is+fun"
+      <a href="../translation-service/?lang=fr&content_0=Hello+World&content_1=This+is+fun"
          aria-description="link to translator's API endpoint">
         See it in action!
       </a>
